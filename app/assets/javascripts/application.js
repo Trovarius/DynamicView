@@ -13,3 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+function submit_action_form(action_id)
+{
+    $('#action_executed').val(action_id);
+    $('form').submit();
+}
