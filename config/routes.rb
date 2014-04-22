@@ -1,4 +1,9 @@
 DynamicViews::Application.routes.draw do
+	
+	match 'page/:id/new' => 'page#new' , :as => :new_page_id
+	match 'page/:id/insert' => 'page#insert' , :as => :insert_page_id
+	match 'page/:id/search' => 'page#search' , :as => :search_page_id
+	match 'page/:id/list' => 'page#list' , :as => :list_page_id
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

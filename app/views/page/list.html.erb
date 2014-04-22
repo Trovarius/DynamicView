@@ -1,0 +1,38 @@
+<% content_for :title do %>
+  @page.title
+<% end %>
+
+<h2><%= @page.name %></h2>
+
+<% if @page.columns.empty? %>
+	Nenhuma coluna
+<%end%>
+
+<div id="content" class="content list">
+	<table id="columns" style="table list">
+		<tr>
+			<% @page.columns.each do |column| %>
+				<th><%= column.title%><th>
+			<% end %>
+		</tr>
+		
+		<% if @result.empty? %>
+			Nenhum dado 
+		<%end%>
+		
+		
+		<% @result.each do |result| %>
+			<tr>
+				<% @page.columns.each do |column| %>
+					<td><%= result[column.title] %><td>
+				<% end %>
+			<tr>
+		<% end %>
+	</table>
+</div>
+
+<div id="action" class="action list">
+	<% @page.actions.each do |action| %>
+		<%= link_to action.title,  new_page_id_path(@page.id)%>
+	<% end %>
+</div>

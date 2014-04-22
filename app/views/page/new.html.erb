@@ -1,0 +1,28 @@
+<% content_for :title do %>
+  @page.title 
+<% end %>
+
+<% if @page.columns.empty? %>
+	Nenhuma coluna
+<%end%>
+
+<div id="content" class="content form">
+	<%= form_tag(insert_page_id_path(@page.id), method: "post")  do %>
+		<table id="columns" style="table form">
+			<% @page.columns.each do |column| %>
+				<tr>
+					<td><%= column.title%><td>
+					<td> <%= text_field_tag(column.title) %> </td>
+				</tr>
+			<% end %>	
+		</table>
+		
+		<div id="action" class="action form">
+			<%= hidden_field_tag(:action_executed) %>
+			<% @page.actions.each do |action| %>
+				<%= submit_tag(action.title, :id => action.id) %>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+
