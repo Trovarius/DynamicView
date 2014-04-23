@@ -33,6 +33,6 @@
 
 <div id="action" class="action list">
 	<% @page.actions.each do |action| %>
-		<%= link_to action.title,  new_page_id_path(@page.id)%>
+		<%= link_to action.title,  new_page_path(@page.id)%>
 	<% end %>
 </div>

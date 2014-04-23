@@ -1,12 +1,12 @@
 DynamicViews::Application.routes.draw do
 	
-	match 'page/:id/new' => 'page#new' , :as => :new_page_id
-	match 'page/:id/insert' => 'page#insert' , :as => :insert_page_id
-	match 'page/:id/detail' => 'page#detail' , :as => :detail_page_id
-	match 'page/:id/update' => 'page#update' , :as => :update_page_id
-	match 'page/:id/search' => 'page#search' , :as => :search_page_id
-	match 'page/:id/list' => 'page#list' , :as => :list_page_id
-	match 'page/:id/index' => 'page#index' , :as => :index_page_id
+	match 'page/:id/new' => 'page#new' , :as => :new_page
+	match 'page/:id/insert/:action_id' => 'page#insert' , :as => :insert_page
+	match 'page/:id/detail' => 'page#detail' , :as => :detail_page
+	match 'page/:id/update' => 'page#update' , :as => :update_page
+	match 'page/:id/search' => 'page#search' , :as => :search_page
+	match 'page/:id/list' => 'page#list' , :as => :list_page
+	match 'page/:id/index' => 'page#index' , :as => :index_page
 	
   # The priority is based upon order of creation:
   # first created -> highest priority.

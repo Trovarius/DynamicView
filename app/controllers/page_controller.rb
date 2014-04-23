@@ -20,8 +20,12 @@ class PageController < ApplicationController
 	
 	def insert
 		@page = Page.find(params[:id])
-		@page.insert_command(params)
-		redirect_to show_path(@page.id)
+		@action = @page.actions.find(params["executed_action"].keys[0])
+		
+		logger.info params
+		result = @action.execute(params)
+		#logger.info request.env
+		redirect_to list_page_path(@page)
 	end
 	
 	def search
