@@ -4,9 +4,28 @@ class Action < ActiveRecord::Base
   
   def execute(params)
 	connection = ActiveRecord::Base.connection;
-	#sql_param = "select " + params.map{ |k,v| "@#{k}=#{v}" }.join(' , ')
-	query = implementation % Hash[params.map{ |k, v| [k.to_sym, v] }]
+	sql_param = "select " + create_sql_variables_from_page_columns(params).join(' , ') 
+	
+	#query = implementation % Hash[params.map{ |k, v| [k.to_sym, v] }]
+	
+	query = sql_param + " " + implementation
+	
 	logger.info query 
 	connection.execute(query)
   end
+  
+  private
+  
+  def create_sql_variables_from_page_columns(params)
+	variables = []
+	
+	self.page.column.each do |column|
+		if params.has_key(column.field)
+			variables << "@#{column.sql_variable(params[column.field])}"
+		end
+	end
+	
+	variables
+  end
+  
 end

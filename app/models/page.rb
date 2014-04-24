@@ -4,6 +4,7 @@ class Page < ActiveRecord::Base
   has_many :actions
   
   #scope actions
+  default_scope :include => [:columns, :actions]
   
   def execute_command
 	connection = ActiveRecord::Base.connection;

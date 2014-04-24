@@ -11,7 +11,8 @@
 <div id="content" class="content list">
 	<table id="columns" style="table list">
 		<tr>
-			<% @page.columns.each do |column| %>
+			<th>#</th>
+			<% @page.columns.list_columns.each do |column| %>
 				<th><%= column.title%><th>
 			<% end %>
 		</tr>
@@ -21,10 +22,11 @@
 		<%end%>
 		
 		
-		<% @result.each do |result| %>
+		<% @result.each_with_index  do |key, index| %>
 			<tr>
-				<% @page.columns.each do |column| %>
-					<td><%= result[column.title] %><td>
+				<td> <%= link_to index.to_s detail_page(:id => @page.id)  %></td>
+				<% @page.columns.list_columns.each do |column| %>
+					<td><%= @result[column.title] %><td>
 				<% end %>
 			<tr>
 		<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140422132124) do
+ActiveRecord::Schema.define(:version => 20140424122018) do
 
   create_table "actions", :force => true do |t|
     t.integer  "page_id"
@@ -38,6 +38,10 @@ ActiveRecord::Schema.define(:version => 20140422132124) do
     t.text     "command"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "order"
+    t.boolean  "is_key"
+    t.string   "field"
+    t.string   "field_type",   :null => false
   end
 
   create_table "pages", :force => true do |t|
