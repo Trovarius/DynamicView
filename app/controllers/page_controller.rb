@@ -1,5 +1,6 @@
 class PageController < ApplicationController
-
+	
+	require 'base64'
 	def index
 		
 	end
@@ -34,6 +35,15 @@ class PageController < ApplicationController
 	def list
 		@page = Page.find(params[:id])
 		@result = @page.execute_command
+		[@page, @result]
+	end
+	
+	def detail
+		@page = Page.find(params[:id])
+		decrypt_key = Base64.decode64(params[:key])
+		where = @page.create_where_by_request(decrypt_key)
+		
+		@result = @page.execute_command(where)
 		[@page, @result]
 	end
 end

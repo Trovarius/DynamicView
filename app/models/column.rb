@@ -14,4 +14,5 @@ class Column < ActiveRecord::Base
 	val = value.nil? ? "null" :"cast('#{value}' as #{field_type}"
 	"@{field} = #{val}"
   end
+  
 end
