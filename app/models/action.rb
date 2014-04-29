@@ -8,7 +8,7 @@ class Action < ActiveRecord::Base
 	
 	#query = implementation % Hash[params.map{ |k, v| [k.to_sym, v] }]
 	
-	query = sql_param + " " + implementation
+	query = sql_param + "; " + implementation + ";"
 	
 	logger.info query 
 	connection.execute(query)
@@ -19,9 +19,9 @@ class Action < ActiveRecord::Base
   def create_sql_variables_from_page_columns(params)
 	variables = []
 	
-	self.page.column.each do |column|
-		if params.has_key(column.field)
-			variables << "@#{column.sql_variable(params[column.field])}"
+	self.page.columns.each do |column|
+		if params.has_key?(column.field)
+			variables << "#{column.sql_variable(params[column.field])}"
 		end
 	end
 	

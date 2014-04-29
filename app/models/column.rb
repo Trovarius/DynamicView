@@ -11,8 +11,8 @@ class Column < ActiveRecord::Base
   scope  :is_key, ->{where('is_key = ?', 1)}
   
   def sql_variable(value = nil)
-	val = value.nil? ? "null" :"cast('#{value}' as #{field_type}"
-	"@{field} = #{val}"
+	val = value.nil? ? "null" :"cast('#{value}' as #{field_type})"
+	"@#{field} = #{val}"
   end
   
 end
