@@ -42,7 +42,6 @@ class PageController < ApplicationController
 		@page = Page.find(params[:id])
 		decrypt_key = Base64.decode64(params[:key])
 		where = @page.create_where_by_request(decrypt_key)
-		
 		@result = @page.execute_command(where)
 		[@page, @result]
 	end

@@ -22,11 +22,12 @@
 		<%end%>
 		
 		
-		<% @result.each_with_index  do |result| %>
+		<% @result.each_with_index  do |result, index| %>
 			<tr>
-				<td> <%= link_to "1", detail_page_path(:id => @page.id, :key => @page.key_url(result))  %></td>
+				<td> <%= link_to "#{index + 1}", detail_page_path(:id => @page.id, :key => @page.key_url(@result[index]))  %></td>
+				
 				<% @page.columns.list_columns.each do |column| %>
-					<td><%= result[column.field] %><td>
+					<td><%= @result[index][column.field.to_sym] %><td>
 				<% end %>
 			<tr>
 		<% end %>
