@@ -1,10 +1,25 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id           :integer          not null, primary key
+#  name         :string
+#  title        :string
+#  command_type :integer
+#  command      :text
+#  hint         :string
+#  created_at   :datetime
+#  updated_at   :datetime
+#  base_table   :string           not null
+#
+
 class Page < ActiveRecord::Base
   require "base64"
   has_many :columns
   has_many :actions
   
   #scope actions
-  default_scope :include => [:columns, :actions]
+  #default_scope {:include => [:columns, :actions]}
   
   def cmd
 	@page_model ||= PageModel.new(base_table, command)

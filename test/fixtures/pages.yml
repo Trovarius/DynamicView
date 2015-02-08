@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id           :integer          not null, primary key
+#  name         :string
+#  title        :string
+#  command_type :integer
+#  command      :text
+#  hint         :string
+#  created_at   :datetime
+#  updated_at   :datetime
+#  base_table   :string           not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 # This model initially had no columns defined.  If you add columns to the
