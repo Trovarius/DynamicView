@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Page.create(name: 'Page 1', title:'Page 1', command_type: 1, command: 'select * from pages', base_table: 'pages')

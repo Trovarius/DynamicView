@@ -1,7 +1,7 @@
 DynamicViews::Application.routes.draw do
 	
   get 'page/:id/new' => 'page#new' , :as => :new_page
-	get 'page/:id/insert/:action_id' => 'page#insert' , :as => :insert_page
+	post 'page/:id/insert/:action_id' => 'page#insert' , :as => :insert_page
 	get 'page/:id/detail' => 'page#detail' , :as => :detail_page
 	get 'page/:id/update' => 'page#update' , :as => :update_page
 	get 'page/:id/search' => 'page#search' , :as => :search_page
